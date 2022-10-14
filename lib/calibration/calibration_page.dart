@@ -15,7 +15,6 @@ class CalibrationPage extends StatefulWidget {
 
 class _CalibrationPageState extends State<CalibrationPage> {
   bool isInit = true;
-  bool isChecked = false;
   double posXInit = 0.0, posYInit = 0.0, posXEnd = 0.0, posYEnd = 0.0;
   bool isCalibrate = false;
   bool medium = false;
@@ -46,10 +45,40 @@ class _CalibrationPageState extends State<CalibrationPage> {
           children: [
             if (!isCalibrate) const CalibrationDirective(),
             if (medium && !isCalibrate) const MediumCalibrate(),
-            if (isCalibrate) const CalibrateSuccess(),
+            if (isCalibrate) const Expanded(child: CalibrateSuccess()),
+            // const Spacer(),
+            if (isCalibrate)
+              SizedBox(
+                height: 50,
+                child: TextButton(
+                  onPressed: () {
+                    setState(
+                      () {
+                        isCalibrate = false;
+                        medium = false;
+                        isInit = true;
+                        posXInit = 0.0;
+                        posYInit = 0.0;
+                        posXEnd = 0.0;
+                        posYEnd = 0.0;
+                      },
+                    );
+                  },
+                  child: const Text('Retry'),
+                ),
+              ),
           ],
         );
       },
     );
+  }
+}
+
+class Retry extends StatelessWidget {
+  const Retry({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(onPressed: () {}, child: const Text('Retry'));
   }
 }

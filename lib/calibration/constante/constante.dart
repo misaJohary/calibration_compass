@@ -1,2 +1,2 @@
-const int stabilityIndex = 20;
+const int stabilityIndex = 18;
 const int mediumStabilityIndex = 15;
