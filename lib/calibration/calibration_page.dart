@@ -46,7 +46,6 @@ class _CalibrationPageState extends State<CalibrationPage> {
             if (!isCalibrate) const CalibrationDirective(),
             if (medium && !isCalibrate) const MediumCalibrate(),
             if (isCalibrate) const Expanded(child: CalibrateSuccess()),
-            // const Spacer(),
             if (isCalibrate)
               SizedBox(
                 height: 50,
@@ -71,14 +70,5 @@ class _CalibrationPageState extends State<CalibrationPage> {
         );
       },
     );
-  }
-}
-
-class Retry extends StatelessWidget {
-  const Retry({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(onPressed: () {}, child: const Text('Retry'));
   }
 }
