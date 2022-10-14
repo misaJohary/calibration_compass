@@ -1,9 +1,7 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
+import 'constante/constante.dart';
 import 'widgets/calibration_directive.dart';
 import 'widgets/calibration_success.dart';
 import 'widgets/medium_calibrate.dart';
@@ -34,9 +32,11 @@ class _CalibrationPageState extends State<CalibrationPage> {
           }
           posXEnd = snapshot.data!.x;
           posYEnd = snapshot.data!.y;
-          if (posXEnd >= posXInit + 18 || posYEnd >= posYInit + 18) {
+          if (posXEnd >= posXInit + stabilityIndex ||
+              posYEnd >= posYInit + stabilityIndex) {
             isCalibrate = true;
-          } else if (posXEnd >= posXInit + 11 || posYEnd >= posYInit + 11) {
+          } else if (posXEnd >= posXInit + mediumStabilityIndex ||
+              posYEnd >= posYInit + mediumStabilityIndex) {
             medium = true;
           }
         }
